@@ -119,7 +119,7 @@
             document.getElementById("number3").innerHTML =
               "Recuerda colocar número positivo";
           } else {
-            if (x < 0) {
+            if (isNaN(x) || x < 0) {
               input3.style.backgroundColor = "#FFFFFF";
               document.getElementById("number3").style.display = "none";
               input2.style.backgroundColor = "#FFFFFF";
@@ -129,7 +129,7 @@
               document.getElementById("number1").style.display = "block";
               document.getElementById("number1").innerHTML =
                 "Recuerda colocar número positivo";
-            } else if (y < 0) {
+            } else if (isNaN(y) || y < 0) {
               input.style.backgroundColor = "#FFFFFF";
               document.getElementById("number1").style.display = "none";
               input3.style.backgroundColor = "#FFFFFF";
@@ -139,7 +139,7 @@
               document.getElementById("number2").style.display = "block";
               document.getElementById("number2").innerHTML =
                 "Recuerda colocar número positivo";
-            } else if (z < 0) {
+            } else if (isNaN(z) || z < 0) {
               input.style.backgroundColor = "#FFFFFF";
               document.getElementById("number1").style.display = "none";
               input2.style.backgroundColor = "#FFFFFF";
@@ -150,45 +150,111 @@
               document.getElementById("number3").innerHTML =
                 "Recuerda colocar número positivo";
             }
-            // if (x > 0) {
-            //   input.style.backgroundColor = "white";
-            //   document.getElementById("number1").style.display = "none";
-            //   n1 = 1;
-            // } else if (isNaN(x) || x < 0) {
-            //   input.style.backgroundColor = "#EF9A9A";
-            //   document.getElementById("number1").style.display = "block";
-            //   document.getElementById("number1").innerHTML =
-            //     "Recuerda colocar número positivo";
-            //   n1 = 0;
-            // } else {
-            //   if (y > 0) {
-            //     input2.style.backgroundColor = "white";
-            //     document.getElementById("number2").style.display = "none";
-            //     n2 = 1;
-            //   } else if (isNaN(y) || y < 0) {
-            //     input2.style.backgroundColor = "#EF9A9A";
-            //     document.getElementById("number2").style.display = "block";
-            //     document.getElementById("number2").innerHTML =
-            //       "Recuerda colocar número positivo";
-            //     n2 = 0;
-            //   } else {
-            //     if (z > 0) {
-            //       input3.style.backgroundColor = "white";
-            //       document.getElementById("number3").style.display = "none";
-            //       n3 = 1;
-            //     } else if (isNaN(z) || z < 0) {
-            //       input3.style.backgroundColor = "#EF9A9A";
-            //       document.getElementById("sumando").innerHTML =
-            //         "recuerda que solo pueden ser números positivos";
-            //       n3 = 0;
-            //     } else {
-            //       document.getElementById("number3").innerHTML = "error";
-            //     }
-            // }
-            // }
+
+            // CUANDO LOS TRES VALORES ESTEN VERIFICADOS SE PROCEDE A CALCULAR EL RESULTADO
+
+            if (x == 0 || y == 0 || z == 0) {
+              if (x == 0 && y == 0 && z == 0) {
+                input.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number1").style.display = "block";
+                document.getElementById("number1").innerHTML =
+                  "El campo 1 no puede estar vacio";
+                input2.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number2").style.display = "block";
+                document.getElementById("number2").innerHTML =
+                  "El campo 2 no puede estar vacio";
+                input3.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number3").style.display = "block";
+                document.getElementById("number3").innerHTML =
+                  "El campo 3 no puede estar vacio";
+                document.getElementById("sumando").innerHTML = "";
+              } else if (x == 0 && y == 0) {
+                input.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number1").style.display = "block";
+                document.getElementById("number1").innerHTML =
+                  "El campo 1 no puede estar vacio";
+                input2.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number2").style.display = "block";
+                document.getElementById("number2").innerHTML =
+                  "El campo 2 no puede estar vacio";
+                input3.style.backgroundColor = "#FFFFFF";
+                document.getElementById("number3").style.display = "none";
+                document.getElementById("sumando").innerHTML = "";
+              } else if (x == 0 && z == 0) {
+                input.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number1").style.display = "block";
+                document.getElementById("number1").innerHTML =
+                  "El campo 1 no puede estar vacio";
+                input3.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number3").style.display = "block";
+                document.getElementById("number3").innerHTML =
+                  "El campo 3 no puede estar vacio";
+                input2.style.backgroundColor = "#FFFFFF";
+                document.getElementById("number2").style.display = "none";
+                document.getElementById("sumando").innerHTML = "";
+              } else if (y == 0 && z == 0) {
+                input2.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number2").style.display = "block";
+                document.getElementById("number2").innerHTML =
+                  "El campo 2 no puede estar vacio";
+                input3.style.backgroundColor = "#EF9A9A";
+                document.getElementById("number3").style.display = "block";
+                document.getElementById("number3").innerHTML =
+                  "El campo 3 no puede estar vacio";
+                input.style.backgroundColor = "#FFFFFF";
+                document.getElementById("number1").style.display = "none";
+                document.getElementById("sumando").innerHTML = "";
+              } else {
+                if (x == 0) {
+                  input.style.backgroundColor = "#EF9A9A";
+                  document.getElementById("number1").style.display = "block";
+                  document.getElementById("number1").innerHTML =
+                    "El campo 1 no puede estar vacio";
+                  input2.style.backgroundColor = "#FFFFFF";
+                  document.getElementById("number2").style.display = "none";
+                  input3.style.backgroundColor = "#FFFFFF";
+                  document.getElementById("number3").style.display = "none";
+                  document.getElementById("sumando").innerHTML = "";
+                } else if (y == 0) {
+                  input2.style.backgroundColor = "#EF9A9A";
+                  document.getElementById("number2").style.display = "block";
+                  document.getElementById("number2").innerHTML =
+                    "El campo 2 no puede estar vacio";
+                  input.style.backgroundColor = "#FFFFFF";
+                  document.getElementById("number1").style.display = "none";
+                  input3.style.backgroundColor = "#FFFFFF";
+                  document.getElementById("number3").style.display = "none";
+                  document.getElementById("sumando").innerHTML = "";
+                } else if (z == 0) {
+                  input3.style.backgroundColor = "#EF9A9A";
+                  document.getElementById("number3").style.display = "block";
+                  document.getElementById("number3").innerHTML =
+                    "El campo 3 no puede estar vacio";
+                  input2.style.backgroundColor = "#FFFFFF";
+                  document.getElementById("number2").style.display = "none";
+                  input.style.backgroundColor = "#FFFFFF";
+                  document.getElementById("number").style.display = "none";
+                  document.getElementById("sumando").innerHTML = "";
+                } else {
+                  input.style.backgroundColor = "#EF9A9A";
+                  document.getElementById("number1").style.display = "block";
+                  document.getElementById("number1").innerHTML =
+                    "El campo 1 no puede estar vacio";
+                  input2.style.backgroundColor = "#EF9A9A";
+                  document.getElementById("number2").style.display = "block";
+                  document.getElementById("number2").innerHTML =
+                    "El campo 2 no puede estar vacio";
+                  input3.style.backgroundColor = "#EF9A9A";
+                  document.getElementById("number3").style.display = "block";
+                  document.getElementById("number3").innerHTML =
+                    "El campo 3 no puede estar vacio";
+                  document.getElementById("sumando").innerHTML = "";
+                }
+              }
+            }
             if (x > 0 && y > 0 && z > 0) {
               document.getElementById("sumando").innerHTML =
-                resultado + " puntos extra";
+                resultado + " puntos";
               document.getElementById("number1").style.display = "none";
               document.getElementById("number2").style.display = "none";
               document.getElementById("number3").style.display = "none";
@@ -196,159 +262,10 @@
               input2.style.backgroundColor = "#FFFFFF";
               input3.style.backgroundColor = "#FFFFFF";
             } else {
-              // document.getElementById("sumando").innerHTML =
-              //   resultado + " puntos";
-              document.getElementById("sumando").innerHTML = "error";
+              document.getElementById("sumando").innerHTML = "";
             }
           }
-          // } else {
-          //   if (isNaN(x) || x < 0) {
-          //     input.style.backgroundColor = "#EF9A9A";
-          //     document.getElementById("number1").style.display = "block";
-          //     document.getElementById("number1").innerHTML =
-          //       "Recuerda colocar número positivo";
-          //   } else if (x > 0) {
-          //     input.style.backgroundColor = "white";
-          //     document.getElementById("number1").style.display = "none";
-          //   } else if (isNaN(y) || y < 0) {
-          //     input2.style.backgroundColor = "#EF9A9A";
-          //     document.getElementById("number2").style.display = "block";
-          //     document.getElementById("number2").innerHTML =
-          //       "Recuerda colocar número positivo";
-          //   } else if (y > 0) {
-          //     input2.style.backgroundColor = "white";
-          //     document.getElementById("number2").style.display = "none";
-          //   } else if (isNaN(z) || z < 0) {
-          //     input3.style.backgroundColor = "#EF9A9A";
-          //     document.getElementById("sumando").innerHTML =
-          //       "recuerda que solo pueden ser números positivos";
-          //   } else if (z > 0) {
-          //     input3.style.backgroundColor = "white";
-          //     document.getElementById("number3").style.display = "none";
-          //   }
-          //     if (x > 0 && y > 0 && z > 0) {
-          //     input.style.backgroundColor = "white";
-          //     input2.style.backgroundColor = "white";
-          //     input3.style.backgroundColor = "white";
-          //     document.getElementById("number1").style.display = "none";
-          //     document.getElementById("number2").style.display = "none";
-          //     document.getElementById("number3").style.display = "none";
-
-          //     document.getElementById("sumando").innerHTML =
-          //       resultado + " puntos";
-          //   }
-          // }
         }
-        // if (isNaN(x) || x < 0 || isNaN(y) || y < 0 || isNaN(z) || z < 0) {
-        //   if (
-        //     (isNaN(x) || x < 0) &&
-        //     (isNaN(y) || y < 0) &&
-        //     (isNaN(z) || z < 0)
-        //   ) {
-        //     input.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number1").style.display = "block";
-        //     document.getElementById("number1").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //     input2.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number2").style.display = "block";
-        //     document.getElementById("number2").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //     input3.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number3").style.display = "block";
-        //     document.getElementById("number3").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //   } else if ((isNaN(x) || x < 0) && (isNaN(y) || y < 0)) {
-        //     input.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number1").style.display = "block";
-        //     document.getElementById("number1").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //     input2.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number2").style.display = "block";
-        //     document.getElementById("number2").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //   } else if ((isNaN(y) || y < 0) && (isNaN(z) || z < 0)) {
-        //     input3.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number3").style.display = "block";
-        //     document.getElementById("number3").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //     input2.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number2").style.display = "block";
-        //     document.getElementById("number2").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //   } else if ((isNaN(x) || x < 0) && (isNaN(z) || z < 0)) {
-        //     input3.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number3").style.display = "block";
-        //     document.getElementById("number3").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //     input.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number1").style.display = "block";
-        //     document.getElementById("number1").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //   }
-        //   if (isNaN(x) || x < 0) {
-        //     input.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number1").style.display = "block";
-        //     document.getElementById("number1").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //   } else if (x > 0) {
-        //     input.style.backgroundColor = "white";
-        //     document.getElementById("number1").style.display = "none";
-        //   }
-        //   if (isNaN(y) || y < 0) {
-        //     input2.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number2").style.display = "block";
-        //     document.getElementById("number2").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //   } else if (y > 0) {
-        //     input2.style.backgroundColor = "white";
-        //     document.getElementById("number2").style.display = "none";
-        //   } z|else if (isNaN(z) || z < 0) {
-        //     input3.style.backgroundColor = "#EF9A9A";
-        //     document.getElementById("number3").style.display = "block";
-        //     document.getElementById("number3").innerHTML =
-        //       "Recuerda colocar número positivo";
-        //   } else if (z > 0) {
-        //     input3.style.backgroundColor = "white";
-        //     document.getElementById("number3").style.display = "none";
-        //   }
-        //   // if (isNaN(x) || x < 0) {
-        //   //   input.style.backgroundColor = "#EF9A9A";
-        //   //   document.getElementById("number1").style.display = "block";
-        //   //   document.getElementById("number1").innerHTML =
-        //   //     "Recuerda colocar número positivo";
-        //   //   document.getElementById("sumando").innerHTML =
-        //   //     "recuerda que solo pueden ser números positivos";
-        //   // } else if (x > 0) {
-        //   //   input.style.backgroundColor = "white";
-        //   // } else if (isNaN(x) || x < 0) {
-        //   //   input.style.backgroundColor = "#EF9A9A";
-        //   //   document.getElementById("sumando").innerHTML =
-        //   //     "recuerda que solo pueden ser números positivos";
-        //   // } else if (y > 0) {
-        //   //   input.style.backgroundColor = "white";
-        //   // } else if (isNaN(y) || y < 0) {
-        //   //   input2.style.backgroundColor = "#EF9A9A";
-        //   //   document.getElementById("sumando").innerHTML =
-        //   //     "recuerda que solo pueden ser números positivos";
-        //   // } else if (y > 0) {
-        //   //   input2.style.backgroundColor = "white";
-        //   // } else if (isNaN(z) || z < 0) {
-        //   //   input3.style.backgroundColor = "#EF9A9A";
-        //   //   document.getElementById("sumando").innerHTML =
-        //   //     "recuerda que solo pueden ser números positivos";
-        //   // } else if (z > 0) {
-        //   //   input3.style.backgroundColor = "white";
-        //   // }
-        // } else {
-        //   input.style.backgroundColor = "white";
-        //   input2.style.backgroundColor = "white";
-        //   input3.style.backgroundColor = "white";
-        //   document.getElementById("number1").style.display = "none";
-        //   document.getElementById("number2").style.display = "none";
-        //   document.getElementById("number3").style.display = "none";
-
-        //   document.getElementById("sumando").innerHTML = resultado + " puntos";
-        // }
       }
     </script>
   </body>
